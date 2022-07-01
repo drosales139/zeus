@@ -1,0 +1,76 @@
+<div class="group-container" fxFlex="50">
+  <h2>Grupos</h2>
+
+  <mat-form-field >
+    <mat-label>Búsqueda</mat-label>
+    <input matInput (keyup)="applyFilter($event)" #input>
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+
+  <div
+    cdkDropList
+    #todoList="cdkDropList"
+    [cdkDropListData]="grouplist"
+    [cdkDropListConnectedTo]="[doneList]"
+    class="group-list"
+    (cdkDropListDropped)="drop($event)"
+  >
+    <div class="group-box" *ngFor="let item of grouplist" cdkDrag>
+      {{ item.name }}
+    </div>
+  </div>
+</div>
+
+<div class="detail-container" fxFlex="50">
+  <h2>Detalle</h2>
+
+  <div
+    cdkDropList
+    #doneList="cdkDropList"
+    [cdkDropListData]="done"
+    [cdkDropListConnectedTo]="[todoList]"
+    class="group-list"
+    (cdkDropListDropped)="drop($event)"
+  >
+    <div
+      class="group-select"
+      dxFlex
+      fxLayout="column"
+      *ngFor="let item of done; let index = index"
+      cdkDrag
+    >
+      <div class="group-title">
+        <mat-checkbox
+          color="primary"
+          [checked]="item.allComplete"
+          [indeterminate]="someComplete(index)"
+          (change)="setAll($event.checked, index)"
+        >
+          {{ item.name }}
+        </mat-checkbox>
+      </div>
+      <div class="employee">
+        <ul>
+          <li *ngFor="let employee of item.list">
+            <mat-checkbox
+              color="primary"
+              [(ngModel)]="employee.select"
+              (ngModelChange)="updateAllComplete(index)"
+            >
+              {{ employee.name }}
+            </mat-checkbox>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <button
+    mat-button
+    color="primary"
+    (click)="showInfo()"
+    [disabled]="!done.length"
+  >
+    Continuar
+  </button>
+</div>

@@ -1,4 +1,11 @@
 <div fxLayout="column">
+  <mat-form-field >
+    <mat-label>Búsqueda</mat-label>
+    <input matInput (keyup)="applyFilter($event)" #input>
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+
+  
   <table fxFlex mat-table [dataSource]="dataSource">
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef>Nombre</th>

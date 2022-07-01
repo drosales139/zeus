@@ -2,16 +2,14 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
+import * as moment from 'moment';
 
 export const MY_FORMATS = {
   parse: {
-    dateInput: 'LL',
+    dateInput: 'YYYY/MM/DD',
   },
   display: {
-    dateInput: 'LL',
-    monthYearLabel: 'MMM YYYY',
-    dateA11yLabel: 'LL',
-    monthYearA11yLabel: 'MMMM YYYY',
+    dateInput: 'YYYY/MM/DD',
   },
 };
 
@@ -34,15 +32,24 @@ export class EmployeeComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder) {
     this.form = formBuilder.group({
-      name: [null, [Validators.required]],
-      last_name: [null, [Validators.required]],
-      birthday: [null, [Validators.required]],
+      name: ['', [Validators.required]],
+      last_name: ['', [Validators.required]],
+      birthday: ['', [Validators.required]],
     });
   }
 
   ngOnInit(): void {}
 
   onSubmit(): void {
-    this._submit.emit(this.form.value);
+
+    const {birthday,...values}= this.form.value
+
+    const payload ={
+      ...values,
+      birthday: moment(birthday).format('YYYY/MM/DD')
+    }
+
+    this._submit.emit(payload);
+    this.form.reset()
   }
 }

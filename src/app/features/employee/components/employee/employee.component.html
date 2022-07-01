@@ -6,7 +6,7 @@
   class="mat-body"
   fxLayoutGap="10px"
 >
-  <div fxFlexFill fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap="10px">
+  <div fxFlexFill fxLayout="row" fxLayoutGap="10px">
     <mat-form-field fxFlex>
       <mat-label>Nombre </mat-label>
       <input
@@ -38,12 +38,18 @@
         </span>
       </mat-error>
     </mat-form-field>
-
+  </div>
+  <div fxFlexFill fxLayout="column" fxLayoutGap="10px">
     <mat-form-field fxFlex>
       <mat-label> Fecha de nacimiento </mat-label>
-      <input matInput [matDatepicker]="picker" formControlName="birthday" />
+      <input
+        matInput
+        [matDatepicker]="picker"
+        formControlName="birthday"
+        [disabled]="true"
+      />
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
+      <mat-datepicker #picker disabled="false"></mat-datepicker>
 
       <mat-error>
         <span *ngIf="form.hasError('required', 'birthday')">

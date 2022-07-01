@@ -8,18 +8,19 @@
       fxLayoutGap="15px"
     >
       <div fxLayout="column" fxLayoutAlign="center center">
-       <employee-form></employee-form>
+       <employee-form #form (onSubmit)="createOrder($event)"></employee-form>
       </div>
     </div>
     <div fxLayout="row" fxLayoutAlign="center stretch" fxLayoutGap="15px">
-      <button mat-raised-button color="primary" mat-dialog-close>
+      <button mat-raised-button color="primary"  [mat-dialog-close]="false">
         Cancelar
       </button>
       <button
         mat-raised-button
         color="primary"
         [mat-dialog-close]="true"
-        
+        (click)="form.onSubmit()"
+        [disabled]="form.form.invalid"
       >
         Aceptar
       </button>

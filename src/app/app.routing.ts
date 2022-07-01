@@ -12,12 +12,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./features/employee/employee.module').then(m=>m.EmployeeModule),
   },
-  // {
-  //   path: 'groups',
-  //   // canActivate: [AuthenticationGuard],
-  //   loadChildren: () =>
-  //     import('./features/orders/order.module').then(m => m.OrderModule),
-  // },
+  {
+    path: 'groups',
+    loadChildren: () =>
+      import('./features/group/group.module').then(m => m.GroupModule),
+  },
  
 ];
 

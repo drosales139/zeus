@@ -1,5 +1,7 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Subscription } from 'rxjs';
 import { Employee } from 'src/app/shared/models/employee';
 import { EmployeeService } from 'src/app/shared/services/employee.service';
 
@@ -10,6 +12,7 @@ import { EmployeeService } from 'src/app/shared/services/employee.service';
 })
 export class CreateEmployeeDialogComponent implements OnInit {
 
+
   constructor(
     private employeeService: EmployeeService
   ) {}
@@ -17,7 +20,6 @@ export class CreateEmployeeDialogComponent implements OnInit {
   ngOnInit(): void {}
 
   createOrder(response:Employee) {
-    this.employeeService.createEmploye(response);
+   this.employeeService.createEmploye(response).subscribe();
   }
-
 }

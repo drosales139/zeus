@@ -19,10 +19,12 @@ export class EmployeeService {
 
 
   getEmployees(): Observable<any> {
-    return this.http.get<any>(`${this.url}/daniela`).pipe(map(v=> v.data.employees));
+    return this.http.get<any>(`${this.url}/daniela`).pipe(map((v:any)=> v.data.employees));
   }
 
-
+  updateEmployees(): Observable<any> {
+    return this.http.get<any>(`${this.url}/daniela`).pipe(map((v:any)=> v.data.employees));
+  }
   
   createEmploye(payload: Employee): Observable<any> {
     return this.http.post<any>(`${this.url}/daniela`, payload);
