@@ -1,0 +1,44 @@
+<div fxLayout="column" class="page">
+  <mat-toolbar color="primary" d-flex fxLayout="row" fxLayoutAlign="end center">
+    <div
+      fxFlex
+      fxFlex.gt-xs="300px"
+      fxLayout="row"
+      fxLayoutAlign="space-around center"
+     
+    >
+      <a
+        mat-button
+        routerLink=""
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Inicio
+      </a>
+      <a
+        mat-button
+        routerLink="/employees"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Empleados
+      </a>
+      <a
+        mat-button
+        routerLink="/groups"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Grupos
+      </a>
+    </div>
+  </mat-toolbar>
+
+  <mat-sidenav-container>
+    <mat-sidenav-content fxFlexFill>
+      <div class="main-container">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

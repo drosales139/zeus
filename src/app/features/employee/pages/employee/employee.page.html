@@ -1,0 +1,10 @@
+<div fxFlex fxLayout="row" fxLayoutAlign="center center">
+  <div fxFlex="80" fxLayout="column">
+
+    <div fxLayout="row" fxLayoutAlign="end center" style="margin-bottom:5px">
+      <button mat-button color="primary" (click)="openModal()">Nuevo</button>
+    </div>
+
+    <employees-list [employeesList]="employees"></employees-list>
+  </div>
+</div>

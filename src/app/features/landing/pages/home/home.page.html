@@ -1,0 +1,35 @@
+<div fxLayout="row" fxLayoutAlign="center center">
+  <div fxShow.lt-sm fxHide.gt-xs fxHide.gt-md >
+    <carousel
+      [overflowCellsLimit]="2"
+      [images]="images"
+      [cellsToShow]="1"
+      [height]="700"
+      [width]="300"
+     
+    >
+    </carousel>
+  </div>
+  <div fxShow.gt-sx fxHide.lt-sm fxHide.gt-md>
+    <carousel
+      [overflowCellsLimit]="2"
+      [images]="images"
+      [cellsToShow]="3"
+      [height]="600"
+      [width]="700"
+     
+    >
+    </carousel>
+  </div>
+  <div fxShow.gt-md  fxHide.lt-sm fxHide.gt-xs>
+    <carousel
+      [overflowCellsLimit]="2"
+      [images]="images"
+      [cellsToShow]="3"
+      [height]="700"
+      [width]="900"
+     
+    >
+    </carousel>
+  </div>
+</div>

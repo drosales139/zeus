@@ -1,0 +1,29 @@
+<div fxLayout="row" fxFlex="500px" fxLayoutAlign="center center">
+  <div fxLayout="column" fxLayoutAlign="center center" fxFlex="80">
+    <h1 class="mat-tltile">Registro empleado</h1>
+    <div
+      class="mat-title"
+      fxLayout="column"
+      fxLayoutAlign="center center"
+      fxLayoutGap="15px"
+    >
+      <div fxLayout="column" fxLayoutAlign="center center">
+       <employee-form></employee-form>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center stretch" fxLayoutGap="15px">
+      <button mat-raised-button color="primary" mat-dialog-close>
+        Cancelar
+      </button>
+      <button
+        mat-raised-button
+        color="primary"
+        [mat-dialog-close]="true"
+        
+      >
+        Aceptar
+      </button>
+    </div>
+  </div>
+</div>
+
